@@ -13,7 +13,7 @@ struct MapLayer
 	unsigned int		width = 0;
 	unsigned int		height = 0;
 
-	p2List<uint>		gid;
+	uint*				gid = nullptr;
 
 	uint Get(int x, int y)const
 	{
