@@ -1,13 +1,5 @@
-﻿  j1App.cpp
-  Generando código...
-  Omitiendo... (no se detectaron cambios relevantes)
-  j1Window.cpp
-  j1Textures.cpp
-  j1Scene.cpp
-  j1Render.cpp
-  j1Player.cpp
-  j1Map.cpp
-  j1Main.cpp
-  j1Input.cpp
+﻿  j1Player.cpp
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(120): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(135): warning C4553: '==': el operador no tiene efecto; ¿ha pensado en '='?
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)

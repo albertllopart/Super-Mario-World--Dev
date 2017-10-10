@@ -4,7 +4,7 @@
 #include "p2List.h"
 #include "j1App.h"
 #include "j1Render.h"
-
+#include "j1Input.h"
 
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
@@ -39,8 +39,7 @@ bool j1Player::Awake(pugi::xml_node& config)
 	LOG("Loading Player");
 	bool ret = true;
 	position.x = 32;
-	position.y = 215;
-	//position.create(32, 215);
+	position.y = 197;
 
 	return ret;
 }
@@ -50,7 +49,9 @@ bool j1Player::Start()
 	LOG("starting player");
 	bool ret = true;
 	graphic = App->tex->Load("maps/Mario.png");
-	
+	state = IDLE_R;
+	dir = RIGHT;
+
 	return ret;
 }
 
@@ -62,6 +63,7 @@ bool j1Player::Update()
 
 bool j1Player::PostUpdate()
 {
+	Input();
 	Draw();
 	return true;
 }
@@ -85,6 +87,70 @@ bool j1Player::Load(pugi::xml_node& node)
 
 void j1Player::Draw()
 {
-	SDL_Rect r = walk_left.GetCurrentFrame();
+	switch (state)
+	{
+		case IDLE_R:
+			current_animation = &idle_right;
+			break;
+
+		case IDLE_L:
+			current_animation = &idle_left;
+			break;
+	
+		case SHORT_HOP_L:
+			current_animation = &short_hop_left;
+			break;
+	
+		case SHORT_HOP_R:
+			current_animation = &short_hop_right;
+			break;
+		
+		case WALK_L:
+			current_animation = &walk_left;
+			break;
+		
+		case WALK_R:
+			current_animation = &walk_right;
+			break;
+	
+
+	}
+	SDL_Rect r = current_animation->GetCurrentFrame();
 	App->render->Blit(graphic, position.x, position.y, &r);
+}
+
+void j1Player::Input()
+{
+	//Right
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	{
+		key_a = false;
+		key_d = true;
+		position.x += SPEED_X;
+		state = WALK_R;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)
+	{
+		key_a == false;
+		key_d = true;
+		position.x += SPEED_X;
+		state = IDLE_R;
+	}
+
+
+	//Left
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	{
+		key_a = true;
+		dir = LEFT;
+		position.x -= SPEED_X;
+		state = WALK_L;	
+	}
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)
+	{
+		key_d = false;
+		key_a = true;
+		position.x -= SPEED_X;
+		state = IDLE_L;	
+	}
 }
