@@ -6,6 +6,7 @@
 #include	"p2List.h"
 #include	"p2Point.h"
 #include	"j1Textures.h"
+#include	"j1Animation.h"
 
 struct SDL_texture;
 struct SDL_Rect;
@@ -31,6 +32,13 @@ private:
 	SDL_Texture*		graphic = nullptr;
 	SDL_Rect*			test;
 	fPoint				position;
+
+	//Animations
+
+	Animation			idle;
+	Animation			walk_left;
+	Animation			walk_right;
+	Animation			short_hop;
 };
 
 #endif
