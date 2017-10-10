@@ -35,10 +35,12 @@ private:
 
 	//Animations
 
-	Animation			idle;
+	Animation			idle_left;
+	Animation			idle_right;
 	Animation			walk_left;
 	Animation			walk_right;
-	Animation			short_hop;
+	Animation			short_hop_left;
+	Animation			short_hop_right;
 };
 
 #endif

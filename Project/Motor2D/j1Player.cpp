@@ -12,6 +12,22 @@
 j1Player::j1Player() : j1Module()
 {
 	name.create("player");
+
+	//Animations
+
+	idle_right.PushBack({ 0, 2, 15, 28 });
+	idle_left.PushBack({ 140, 2, 15, 28 });
+
+	walk_right.PushBack({ 40, 2, 16, 28 });
+	walk_right.PushBack({ 20, 3, 16, 27 });
+	walk_right.PushBack({ 0, 2, 15, 28 });
+
+	walk_left.PushBack({ 99, 2, 16, 28 });
+	walk_left.PushBack({ 119, 3, 16, 27 });
+	walk_left.PushBack({ 140, 2, 15, 28 });
+
+	short_hop_right.PushBack({ 60, 0, 16, 31 });
+	short_hop_left.PushBack({ 79, 0, 16, 31 });
 }
 
 j1Player::~j1Player()
@@ -35,7 +51,6 @@ bool j1Player::Start()
 	bool ret = true;
 	graphic = App->tex->Load("maps/Mario.png");
 	
-
 	return ret;
 }
 
@@ -70,5 +85,6 @@ bool j1Player::Load(pugi::xml_node& node)
 
 void j1Player::Draw()
 {
-	App->render->Blit(graphic, position.x, position.y, test);
+	SDL_Rect r = walk_left.GetCurrentFrame();
+	App->render->Blit(graphic, position.x, position.y, &r);
 }

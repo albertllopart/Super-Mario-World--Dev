@@ -2,13 +2,13 @@
 #define _j1ANIMATION_H_
 
 #include "SDL/include/SDL_rect.h"
-#define FRAMES 3
+#define FRAMES 15
 
 class Animation
 {
 public:
 
-	float				speed = 1.0f;
+	float				speed = 0.15f;
 	SDL_Rect			frames[FRAMES];
 
 private:
@@ -20,12 +20,12 @@ public:
 
 	void PushBack(const SDL_Rect& rect)
 	{
-		frames[last_frame] = rect;
+		frames[last_frame++] = rect;
 	}
 
 	SDL_Rect& GetCurrentFrame()
 	{
-		current_frame = +speed;
+		current_frame += speed;
 		if (current_frame >= last_frame)
 		{
 			current_frame = 0;
