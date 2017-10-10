@@ -1,3 +1,4 @@
 ﻿  j1Player.cpp
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(73): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)

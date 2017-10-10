@@ -136,7 +136,7 @@ bool j1Map::Load(const char* file_name)
 
 		if(ret == true)
 		{
-			LoadTilesetDetails(tileset, set);
+			ret= LoadTilesetDetails(tileset, set);
 		}
 
 		if(ret == true)

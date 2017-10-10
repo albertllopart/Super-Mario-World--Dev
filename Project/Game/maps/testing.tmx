@@ -3,6 +3,9 @@
  <tileset firstgid="1" name="backgroundTileset" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="48" columns="8">
   <image source="backgroundTileset.png" width="136" height="102"/>
  </tileset>
+ <tileset firstgid="49" name="test" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="64" columns="8">
+  <image source="floorTiles22et.png" width="152" height="152"/>
+ </tileset>
  <layer name="cel" width="50" height="15">
   <data>
    <tile gid="11"/>

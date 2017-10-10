@@ -3,6 +3,7 @@
 #include "j1Player.h"
 #include "p2List.h"
 #include "j1App.h"
+#include "j1Render.h"
 
 
 #include "SDL_image/include/SDL_image.h"
@@ -17,13 +18,37 @@ j1Player::~j1Player()
 {
 }
 
+bool j1Player::Awake(pugi::xml_node& config)
+{
+	LOG("Loading Player");
+	bool ret = true;
+	position.x = 32;
+	position.y = 215;
+	//position.create(32, 215);
+
+	return ret;
+}
+
 bool j1Player::Start()
 {
 	LOG("starting player");
 	bool ret = true;
-	graphic = App->tex->Load("maps/test.png");
+	graphic = App->tex->Load("maps/Mario.png");
+	
 
 	return ret;
+}
+
+bool j1Player::Update()
+{
+	
+	return true;
+}
+
+bool j1Player::PostUpdate()
+{
+	Draw();
+	return true;
 }
 
 bool j1Player::CleanUp()
@@ -31,24 +56,6 @@ bool j1Player::CleanUp()
 	LOG("Destroying player");
 	bool ret = true;
 	return ret;
-}
-
-bool j1Player::Awake(pugi::xml_node& config)
-{
-	position.x = 32;
-	position.y = 215;
-	//position.create(32, 215);
-	return true;
-}
-
-bool j1Player::Update()
-{
-	return true;
-}
-
-bool j1Player::PostUpdate()
-{
-	return true;
 }
 
 bool j1Player::Load(pugi::xml_node& node)
@@ -59,4 +66,9 @@ bool j1Player::Load(pugi::xml_node& node)
 	player.append_attribute("y") = position.y;
 
 	return ret;
+}
+
+void j1Player::Draw()
+{
+	App->render->Blit(graphic, position.x, position.y, test);
 }

@@ -22,6 +22,7 @@ public:
 	bool PostUpdate();
 	bool Load(pugi::xml_node&);
 
+	void Draw();
 
 private:
 	p2SString			name = nullptr;
