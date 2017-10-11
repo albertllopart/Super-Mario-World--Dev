@@ -70,9 +70,9 @@ bool j1Render::PreUpdate()
 
 bool j1Render::Update(float dt)
 {
-	if ((int)App->player->position.x / 16 >= 10 && ((int)App->player->position.x / 16 <= 40))
+	if ((int)App->player->position.x / 16 >= 12 && ((int)App->player->position.x / 16 <= 36))
 	{
-		camera.x = ((int)App->player->position.x - 10*16)* -1;
+		camera.x = ((int)App->player->position.x - 12*16)* -2;
 	}
 	return true;
 }
