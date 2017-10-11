@@ -41,7 +41,7 @@ bool j1Player::Awake(pugi::xml_node& config)
 	position.x = 32;
 	position.y = 197;
 	velocity.x = 0;
-	velocity.y = 0;
+	velocity.y = 2;
 
 	return ret;
 }
@@ -160,14 +160,14 @@ void j1Player::Input()
 			state = SHORT_HOP_L;
 			c_time = GetCurrentTime();
 			
-			while (velocity.y >= 0)				//en algun moment hauria de ser negativa no?
+			while (velocity.y >= 0)				
 			{
-				p_time = c_time;				//previous time = current time
-				c_time = GetCurrentTime();		//current time = el temps actual
-				float dt = c_time - p_time;		//la diferencia de temps es el actual- el previ
+				p_time = c_time;				
+				c_time = GetCurrentTime();		
+				float dt = c_time - p_time;		
 				Jump(dt);		
 			}
-			               
+			//velocity.y = 2;
 	
 		}
 		/*if (dir == RIGHT)
@@ -186,5 +186,5 @@ void j1Player::Input()
 void j1Player::Jump(float dt)
 {
 	position.y -= velocity.y*dt;	
-	velocity.y += gravity*dt;
+	velocity.y += GRAVITY*dt;
 }
