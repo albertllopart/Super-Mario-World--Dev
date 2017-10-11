@@ -8,7 +8,7 @@
 #include	"j1Textures.h"
 #include	"j1Animation.h"
 
-#define		SPEED_X 0.15f
+#define		SPEED_X 0.3f
 #define		SPEED_Y 1.0f
 
 
