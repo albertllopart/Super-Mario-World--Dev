@@ -5,6 +5,7 @@
 #include "j1App.h"
 #include "j1Render.h"
 #include "j1Input.h"
+#include "j1Map.h"
 
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
@@ -127,13 +128,20 @@ void j1Player::Input()
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		dir = RIGHT;
-		position.x += SPEED_X;
+		if (App->map->IsWalkable())
+		{
+			position.x += SPEED_X;
+		}
 		state = WALK_R;
+		
 	}
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)
 	{
 		dir = RIGHT;
-		position.x += SPEED_X;
+		if (App->map->IsWalkable())
+		{
+			position.x += SPEED_X;
+		}
 		state = IDLE_R;
 	}
 
@@ -142,14 +150,19 @@ void j1Player::Input()
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 		dir = LEFT;
-		position.x -= SPEED_X;
+		if (App->map->IsWalkable())
+		{
+			position.x -= SPEED_X;
+		}
 		state = WALK_L;	
 	}
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)
 	{
 		dir = LEFT;
-		position.x -= SPEED_X;
-		state = IDLE_L;	
+		{
+			position.x -= SPEED_X;
+		}
+		state = IDLE_L;
 	}
 
 	//Jump

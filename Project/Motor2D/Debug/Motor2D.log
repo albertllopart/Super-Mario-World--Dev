@@ -1,7 +1,7 @@
 ﻿  j1Player.cpp
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.h(70): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(121): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(161): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(166): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(122): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(174): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(179): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)

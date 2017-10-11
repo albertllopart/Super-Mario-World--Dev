@@ -15,7 +15,7 @@ struct MapLayer
 
 	uint*				gid = nullptr;
 
-	uint Get(int x, int y)const
+	uint GetGid(int x, int y)const
 	{
 		return gid[y*width + x];
 	}
@@ -94,6 +94,9 @@ public:
 	iPoint MapToWorld(int x, int y) const;
 	iPoint WorldToMap(int x, int y) const;
 
+	//Colisions
+	bool IsWalkable();
+
 private:
 
 	bool LoadMap();
@@ -112,7 +115,9 @@ public:
 
 private:
 
+
 	pugi::xml_document	map_file;
+	pugi::xml_node		map_node;
 	p2SString			folder;
 	bool				map_loaded;
 	

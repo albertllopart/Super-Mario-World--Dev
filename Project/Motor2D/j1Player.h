@@ -54,6 +54,7 @@ public:
 	void Jump(float dt);
 
 	fPoint				position;
+	Direction			dir;
 
 private:
 	p2SString			name = nullptr;
@@ -63,7 +64,6 @@ private:
 	SDL_Rect*			test;
 	
 	PLAYER_STATE		state;
-	Direction			dir;
 	fPoint				velocity;
 	float				p_time = 0;
 	float				c_time;

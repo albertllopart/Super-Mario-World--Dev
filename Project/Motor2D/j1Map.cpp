@@ -44,7 +44,7 @@ void j1Map::Draw()
 			{
 				for (uint y = 0; y < fakeLayer->data->height; y++)
 				{
-					int ID = fakeLayer->data->Get(x, y);
+					int ID = fakeLayer->data->GetGid(x, y);
 					iPoint position = MapToWorld(x, y);
 					SDL_Rect rect = fakeTileset->data->GetTileRect(ID);
 
@@ -381,5 +381,44 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 		i++;
 	}
 	
+	return ret;
+}
+
+bool j1Map::IsWalkable()
+{
+	bool ret;
+	int player_x	= App->player->position.x / 16 ; //check next tile right
+	int player_y	= App->player->position.y / 16;
+	p2List_item<MapLayer*>* iterator;
+	p2List_item<MapLayer*>* fakeLayer = nullptr;
+	
+	for (iterator = data.layers.start; iterator != NULL; iterator = iterator->next)
+	{
+		if (iterator->data->name == "logica")
+		{
+			fakeLayer = iterator;
+		}
+	}
+
+	//uint nextGid = fakeLayer->data->GetGid(player_x,player_y);
+	uint* nextGid = &fakeLayer->data->gid[player_x + player_y*fakeLayer->data->width];
+	if (App->player->dir == RIGHT)
+	{
+		nextGid++;
+		if (*nextGid == 19) 
+			ret = false;
+		else if (*nextGid != 19)
+			ret = true;
+	}
+	else if (App->player->dir == LEFT)
+	{
+		nextGid--;
+		if (*nextGid == 19) 
+			ret = false;
+		else if (*nextGid != 19) 
+			ret = true;
+	}
+	
+
 	return ret;
 }
