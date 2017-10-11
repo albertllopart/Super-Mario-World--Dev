@@ -4,6 +4,7 @@
 #include "j1Render.h"
 #include "j1Textures.h"
 #include "j1Map.h"
+#include "j1Player.h"
 #include <math.h>
 
 j1Map::j1Map() : j1Module(), map_loaded(false)
@@ -52,9 +53,14 @@ void j1Map::Draw()
 						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
 
 					else if (fakeLayer->data->name == "Muntanya2")
-						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
+					{
+						//MOUNTAIN PARALLAX
+						App->render->Blit(fakeTileset->data->texture, position.x - App->player->position.x / 4, position.y, &rect);
+					}
+						
 					else if (fakeLayer->data->name == "nuvols")
 					{
+						//CLOUD PARALLAX
 						if (cloud_parallax / fakeTileset->data->tile_width >= fakeLayer->data->width / 2)
 						{
 							cloud_parallax = 0.0f;

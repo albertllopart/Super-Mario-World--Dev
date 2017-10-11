@@ -53,13 +53,15 @@ public:
 	void Draw();
 	void Jump(float dt);
 
+	fPoint				position;
+
 private:
 	p2SString			name = nullptr;
 	unsigned int		width = 0;
 	unsigned int		height = 0;
 	SDL_Texture*		graphic = nullptr;
 	SDL_Rect*			test;
-	fPoint				position;
+	
 	PLAYER_STATE		state;
 	Direction			dir;
 	fPoint				velocity;
