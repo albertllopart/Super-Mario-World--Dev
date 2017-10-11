@@ -9,6 +9,9 @@
 #include	"j1Animation.h"
 
 #define		SPEED_X 0.15f
+#define		SPEED_Y 1.0f
+
+
 struct SDL_texture;
 struct SDL_Rect;
 
@@ -48,7 +51,7 @@ public:
 	bool Load(pugi::xml_node&);
 	void Input();
 	void Draw();
-
+	void Jump(float dt);
 
 private:
 	p2SString			name = nullptr;
@@ -59,8 +62,10 @@ private:
 	fPoint				position;
 	PLAYER_STATE		state;
 	Direction			dir;
-	bool				key_a = false;
-	bool				key_d = false;
+	fPoint				velocity;
+	float				p_time = 0;
+	float				c_time;
+	float				gravity = 9.8;
 
 	//Animations
 	Animation			idle_left;

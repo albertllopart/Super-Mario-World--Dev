@@ -40,6 +40,8 @@ bool j1Player::Awake(pugi::xml_node& config)
 	bool ret = true;
 	position.x = 32;
 	position.y = 197;
+	velocity.x = 0;
+	velocity.y = 0;
 
 	return ret;
 }
@@ -124,15 +126,13 @@ void j1Player::Input()
 	//Right
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
-		key_a = false;
-		key_d = true;
+		dir = RIGHT;
 		position.x += SPEED_X;
 		state = WALK_R;
 	}
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)
 	{
-		key_a == false;
-		key_d = true;
+		dir = RIGHT;
 		position.x += SPEED_X;
 		state = IDLE_R;
 	}
@@ -141,16 +141,50 @@ void j1Player::Input()
 	//Left
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
-		key_a = true;
 		dir = LEFT;
 		position.x -= SPEED_X;
 		state = WALK_L;	
 	}
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)
 	{
-		key_d = false;
-		key_a = true;
+		dir = LEFT;
 		position.x -= SPEED_X;
 		state = IDLE_L;	
 	}
+
+	//Jump
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		if (dir == LEFT)
+		{
+			state = SHORT_HOP_L;
+			c_time = GetCurrentTime();
+			
+			while (velocity.y >= 0)				//en algun moment hauria de ser negativa no?
+			{
+				p_time = c_time;				//previous time = current time
+				c_time = GetCurrentTime();		//current time = el temps actual
+				float dt = c_time - p_time;		//la diferencia de temps es el actual- el previ
+				Jump(dt);		
+			}
+			               
+	
+		}
+		/*if (dir == RIGHT)
+		{
+			//position.y += velocity.y*dt;
+			velocity.y -= GRAVITY;
+			//position.y -= SPEED_Y;
+			state = SHORT_HOP_R;
+		}*/
+		
+	}
+	
+
+}
+
+void j1Player::Jump(float dt)
+{
+	position.y -= velocity.y*dt;	
+	velocity.y += gravity*dt;
 }
