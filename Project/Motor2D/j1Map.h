@@ -104,14 +104,18 @@ private:
 
 public:
 
-	MapData data;
-	float cloud_parallax = 0.0f;
+	MapData				data;
+	float				cloud_parallax = 0.0f;
+
+	//LOGIC LAYER
+	bool				logic = false;
 
 private:
 
 	pugi::xml_document	map_file;
 	p2SString			folder;
 	bool				map_loaded;
+	
 };
 
 #endif // __j1MAP_H__

@@ -49,7 +49,8 @@ void j1Map::Draw()
 					SDL_Rect rect = fakeTileset->data->GetTileRect(ID);
 
 					if (fakeLayer->data->name != "Muntanya2" && 
-						fakeLayer->data->name != "nuvols")
+						fakeLayer->data->name != "nuvols" &&
+						fakeLayer->data->name != "logica")
 						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
 
 					else if (fakeLayer->data->name == "Muntanya2")
@@ -67,6 +68,10 @@ void j1Map::Draw()
 						}
 						App->render->Blit(fakeTileset->data->texture, position.x - cloud_parallax, position.y, &rect);
 						cloud_parallax += 0.00005f;
+					}
+					else if (fakeLayer->data->name == "logica" && logic)
+					{
+						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
 					}
 				}
 			}
