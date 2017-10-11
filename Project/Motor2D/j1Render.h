@@ -43,6 +43,9 @@ public:
 	// Set background color
 	void SetBackgroundColor(SDL_Color color);
 
+	//LOGIC INPUT
+	void Input();
+
 public:
 
 	SDL_Renderer*	renderer;

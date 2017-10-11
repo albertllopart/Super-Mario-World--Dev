@@ -4,6 +4,8 @@
 #include "j1Window.h"
 #include "j1Render.h"
 #include "j1Player.h"
+#include "j1Input.h"
+#include "j1Map.h"
 
 #define VSYNC true
 
@@ -74,6 +76,7 @@ bool j1Render::Update(float dt)
 	{
 		camera.x = ((int)App->player->position.x - 12*16)* -2;
 	}
+
 	return true;
 }
 
@@ -81,6 +84,8 @@ bool j1Render::PostUpdate()
 {
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
 	SDL_RenderPresent(renderer);
+
+	Input();
 	return true;
 }
 
@@ -249,4 +254,20 @@ bool j1Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, U
 	}
 
 	return ret;
+}
+
+void j1Render::Input()
+{
+	//LOGIC LAYER
+	if (App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
+	{
+		if (App->map->logic == false)
+		{
+			App->map->logic = true;
+		}
+		else if (App->map->logic == true)
+		{
+			App->map->logic = false;
+		}
+	}
 }
