@@ -412,7 +412,7 @@ bool j1Map::IsWalkable()
 	}
 	else if (App->player->dir == LEFT)
 	{
-		nextGid--;
+		nextGid;
 		if (*nextGid == 19) 
 			ret = false;
 		else if (*nextGid != 19) 

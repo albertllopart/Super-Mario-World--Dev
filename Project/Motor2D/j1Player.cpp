@@ -39,7 +39,7 @@ bool j1Player::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Player");
 	bool ret = true;
-	position.x = 32;
+	position.x = 150;
 	position.y = 197;
 	velocity.x = 0;
 	velocity.y = 2;
@@ -67,6 +67,10 @@ bool j1Player::Update()
 bool j1Player::PostUpdate()
 {
 	Input();
+	if (Falling())
+	{
+		position.y += 1.0f;
+	}
 	Draw();
 	return true;
 }
@@ -159,6 +163,7 @@ void j1Player::Input()
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)
 	{
 		dir = LEFT;
+		if (App->map->IsWalkable())
 		{
 			position.x -= SPEED_X;
 		}
@@ -200,4 +205,36 @@ void j1Player::Jump(float dt)
 {
 	position.y -= velocity.y*dt;	
 	velocity.y += GRAVITY*dt;
+}
+
+bool j1Player::Falling()
+{
+	bool ret = false;
+	p2List_item<MapLayer*>* iterator;
+	p2List_item<MapLayer*>* fakeLayer = nullptr;
+
+	for (iterator = App->map->data.layers.start; iterator != NULL; iterator = iterator->next)
+	{
+		if (iterator->data->name == "logica")
+		{
+			fakeLayer = iterator;
+		}
+	}
+
+	//uint nextGid = fakeLayer->data->GetGid(player_x,player_y);
+	uint* nextGid = &fakeLayer->data->gid[(int)position.x / 16 + (((int)position.y / 16) + 2) * fakeLayer->data->width];
+
+	if (state != SHORT_HOP_L && state != SHORT_HOP_R)
+	{
+		if (*nextGid != 19)
+		{
+			ret = true;
+		}
+		else
+		{
+			ret = false;
+		}
+	}
+
+	return ret;
 }
