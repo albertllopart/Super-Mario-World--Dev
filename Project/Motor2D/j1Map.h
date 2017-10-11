@@ -105,6 +105,7 @@ private:
 public:
 
 	MapData data;
+	float cloud_parallax = 0.0f;
 
 private:
 

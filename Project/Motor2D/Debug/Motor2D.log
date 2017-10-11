@@ -1,3 +1,4 @@
-﻿  j1Scene.cpp
-  Motor2D.vcxproj -> C:\Users\albertln\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
-  Motor2D.vcxproj -> C:\Users\albertln\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)
+﻿  j1Map.cpp
+c:\users\albert\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Motor2D.vcxproj -> C:\Users\Albert\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
+  Motor2D.vcxproj -> C:\Users\Albert\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)

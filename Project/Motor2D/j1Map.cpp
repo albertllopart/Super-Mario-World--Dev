@@ -47,7 +47,21 @@ void j1Map::Draw()
 					iPoint position = MapToWorld(x, y);
 					SDL_Rect rect = fakeTileset->data->GetTileRect(ID);
 
-					App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
+					if (fakeLayer->data->name != "Muntanya2" && 
+						fakeLayer->data->name != "nuvols")
+						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
+
+					else if (fakeLayer->data->name == "Muntanya2")
+						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
+					else if (fakeLayer->data->name == "nuvols")
+					{
+						if (cloud_parallax / fakeTileset->data->tile_width >= fakeLayer->data->width / 2)
+						{
+							cloud_parallax = 0.0f;
+						}
+						App->render->Blit(fakeTileset->data->texture, position.x - cloud_parallax, position.y, &rect);
+						cloud_parallax += 0.00005f;
+					}
 				}
 			}
 			fakeLayer = fakeLayer->next;
