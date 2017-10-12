@@ -68,12 +68,23 @@ bool j1Player::Update()
 
 bool j1Player::PostUpdate()
 {
-	Input();
-	if (Falling())
+	if (dead == false)
 	{
-		position.y += 1.0f;
+		Input();
+		if (Falling())
+		{
+			position.y += 1.0f;
+		}
+		Draw();
 	}
-	Draw();
+	if (dead)
+	{
+		return false;
+		//App->map->restart();
+	}
+	
+	
+	
 	return true;
 }
 
@@ -175,7 +186,7 @@ void j1Player::Input()
 	//Jump
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
-		App->audio->PlayFx(1);
+		//App->audio->PlayFx(1);
 		if (dir == LEFT)
 		{
 			state = SHORT_HOP_L;
@@ -277,14 +288,20 @@ bool j1Player::Falling()
 
 	if (state != SHORT_HOP_L && state != SHORT_HOP_R)
 	{
-		if (*nextGid != 19)
+		if (*nextGid == 0)
 		{
 			ret = true;
 		}
-		else
+		else if(*nextGid ==19)
 		{
 			ret = false;
 		}
+		else if (*nextGid == 20)
+		{
+			dead = true;
+			ret = false;
+		}
+
 	}
 
 	return ret;

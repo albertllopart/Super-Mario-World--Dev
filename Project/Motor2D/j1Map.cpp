@@ -426,6 +426,7 @@ bool j1Map::IsWalkable()
 		else if (*nextGid != 19) 
 			ret = true;
 	}
+
 	
 
 	return ret;

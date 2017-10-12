@@ -59,6 +59,7 @@ public:
 
 	fPoint				position;
 	Direction			dir;
+	bool				dead = false;
 
 private:
 	p2SString			name = nullptr;
@@ -66,7 +67,6 @@ private:
 	unsigned int		height = 0;
 	SDL_Texture*		graphic = nullptr;
 	SDL_Rect*			test;
-	
 	PLAYER_STATE		state;
 	fPoint				velocity;
 	float				p_time = 0;
