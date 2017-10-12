@@ -6,6 +6,7 @@
 #include "j1Render.h"
 #include "j1Input.h"
 #include "j1Map.h"
+#include "j1Audio.h"
 
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
@@ -54,6 +55,7 @@ bool j1Player::Start()
 	graphic = App->tex->Load("maps/Mario.png");
 	state = IDLE_R;
 	dir = RIGHT;
+	App->audio->LoadFx("/audio/jump.wav");
 
 	return ret;
 }
@@ -173,11 +175,12 @@ void j1Player::Input()
 	//Jump
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
+		App->audio->PlayFx(1);
 		if (dir == LEFT)
 		{
 			state = SHORT_HOP_L;
 			c_time = GetCurrentTime();
-			
+			App->audio->PlayFx(1);
 			while (velocity.y >= 0)				
 			{
 				p_time = c_time;				
@@ -192,7 +195,7 @@ void j1Player::Input()
 		{
 			state = SHORT_HOP_R;
 			c_time = GetCurrentTime();
-
+			
 			while (velocity.y >= 0)
 			{
 				p_time = c_time;

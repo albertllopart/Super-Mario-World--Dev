@@ -1,8 +1,13 @@
-﻿  j1Map.cpp
+﻿  j1Player.cpp
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.h(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(77): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(398): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(399): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(128): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(182): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(187): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(197): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(202): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(216): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(221): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(231): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(236): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)
