@@ -53,6 +53,8 @@ public:
 	void Input();
 	void Draw();
 	void Jump(float dt);
+	void Jump_l(float dt);
+	void Jump_r(float dt);
 	bool Falling();
 
 	fPoint				position;

@@ -41,8 +41,8 @@ bool j1Player::Awake(pugi::xml_node& config)
 	bool ret = true;
 	position.x = 150;
 	position.y = 197;
-	velocity.x = 0;
-	velocity.y = 2;
+	velocity.x = 2;
+	velocity.y = 3;
 
 	return ret;
 }
@@ -185,19 +185,57 @@ void j1Player::Input()
 				float dt = c_time - p_time;		
 				Jump(dt);		
 			}
-			//velocity.y = 2;
 			state = IDLE_L;
+
 		}
-		/*if (dir == RIGHT)
+		if (dir == RIGHT)
 		{
-			//position.y += velocity.y*dt;
-			velocity.y -= GRAVITY;
-			//position.y -= SPEED_Y;
 			state = SHORT_HOP_R;
-		}*/
+			c_time = GetCurrentTime();
+
+			while (velocity.y >= 0)
+			{
+				p_time = c_time;
+				c_time = GetCurrentTime();
+				float dt = c_time - p_time;
+				Jump(dt);
+			}
+			state = IDLE_R;
+		}
+		
+		velocity.y = 3;;
 		
 	}
 	
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	{
+		state = SHORT_HOP_L;
+		c_time = GetCurrentTime();
+
+		while (velocity.y >= 0)
+		{
+			p_time = c_time;
+			c_time = GetCurrentTime();
+			float dt = c_time - p_time;
+			Jump(dt);
+			Jump_l(dt);	
+		}
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	{
+		state = SHORT_HOP_R;
+		c_time = GetCurrentTime();
+
+		while (velocity.y >= 0)
+		{
+			p_time = c_time;
+			c_time = GetCurrentTime();
+			float dt = c_time - p_time;
+			Jump(dt);
+			Jump_r(dt);
+		}
+	}
 
 }
 
@@ -205,6 +243,16 @@ void j1Player::Jump(float dt)
 {
 	position.y -= velocity.y*dt;	
 	velocity.y += GRAVITY*dt;
+}
+
+void j1Player::Jump_l(float dt)
+{
+	position.x -= velocity.x*dt;
+}
+
+void j1Player::Jump_r(float dt)
+{
+	position.x += velocity.x*dt;
 }
 
 bool j1Player::Falling()
