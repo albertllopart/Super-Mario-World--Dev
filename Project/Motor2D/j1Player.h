@@ -11,6 +11,7 @@
 #define		SPEED_X 0.3f
 #define		SPEED_Y 1.0f
 #define		GRAVITY -2.0f
+#define		MARIO_HIGHT 28
 
 struct SDL_texture;
 struct SDL_Rect;

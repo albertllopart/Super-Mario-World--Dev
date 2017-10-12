@@ -186,7 +186,7 @@ void j1Player::Input()
 				Jump(dt);		
 			}
 			//velocity.y = 2;
-	
+			state = IDLE_L;
 		}
 		/*if (dir == RIGHT)
 		{
@@ -222,7 +222,7 @@ bool j1Player::Falling()
 	}
 
 	//uint nextGid = fakeLayer->data->GetGid(player_x,player_y);
-	uint* nextGid = &fakeLayer->data->gid[(int)position.x / 16 + (((int)position.y / 16) + 2) * fakeLayer->data->width];
+	uint* nextGid = &fakeLayer->data->gid[(int)position.x / 16 + (((int)position.y + MARIO_HIGHT) / 16) * fakeLayer->data->width];
 
 	if (state != SHORT_HOP_L && state != SHORT_HOP_R)
 	{

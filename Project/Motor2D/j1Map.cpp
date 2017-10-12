@@ -388,7 +388,7 @@ bool j1Map::IsWalkable()
 {
 	bool ret;
 	int player_x	= App->player->position.x / 16 ; //check next tile right
-	int player_y	= App->player->position.y / 16;
+	int player_y	= (App->player->position.y + 14)/ 16;
 	p2List_item<MapLayer*>* iterator;
 	p2List_item<MapLayer*>* fakeLayer = nullptr;
 	
