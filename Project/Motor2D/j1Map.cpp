@@ -6,6 +6,7 @@
 #include "j1Map.h"
 #include "j1Player.h"
 #include <math.h>
+#include "j1Audio.h"
 
 j1Map::j1Map() : j1Module(), map_loaded(false)
 {
@@ -23,8 +24,15 @@ bool j1Map::Awake(pugi::xml_node& config)
 	bool ret = true;
 
 	folder.create(config.child("folder").child_value());
+	
 
 	return ret;
+}
+
+bool j1Map::Start()
+{
+	App->audio->PlayMusic("audio/main_music.ogg");
+	return true;
 }
 
 void j1Map::Draw()
