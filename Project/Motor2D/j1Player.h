@@ -8,25 +8,21 @@
 #include	"j1Textures.h"
 #include	"j1Animation.h"
 
-#define		SPEED_X 0.3f
-#define		SPEED_Y 1.5f
+#define		SPEED_X 0.5f
+#define		SPEED_Y 0.75f
 #define		GRAVITY -2.0f
 #define		MARIO_HIGHT 28
+#define		MARIO_WIDTH 12
 
 struct SDL_texture;
 struct SDL_Rect;
 
 enum PLAYER_STATE
 {
-	IDLE_R,
-	IDLE_L,
-	SHORT_HOP_L,
-	SHORT_HOP_R,
-	WALK_L,
-	WALK_R,
-	RUN_L,
-	RUN_R
-
+	IDLE,
+	JUMP,
+	WALK,
+	FALL
 };
 
 enum PLAYER_SUBSTATE
@@ -58,9 +54,7 @@ public:
 	bool Load(pugi::xml_node&);
 	void Input();
 	void Draw();
-	void Jump(float dt);
-	void Jump_l(float dt);
-	void Jump_r(float dt);
+	
 	bool Falling();
 	void Jumping();
 
@@ -88,6 +82,9 @@ private:
 	Animation			walk_right;
 	Animation			short_hop_left;
 	Animation			short_hop_right;
+	Animation			falling_left;
+	Animation			falling_right;
+	Animation			victory;
 	Animation*			current_animation;
 
 	//jump albert

@@ -64,7 +64,7 @@ void j1Map::Draw()
 					else if (fakeLayer->data->name == "Muntanya2")
 					{
 						//MOUNTAIN PARALLAX
-						App->render->Blit(fakeTileset->data->texture, position.x - App->player->position.x / 4, position.y, &rect);
+						App->render->Blit(fakeTileset->data->texture, position.x + App->render->camera.x / 12, position.y, &rect);
 					}
 						
 					else if (fakeLayer->data->name == "nuvols")

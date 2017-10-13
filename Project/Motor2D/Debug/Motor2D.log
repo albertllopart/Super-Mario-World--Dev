@@ -1,5 +1,5 @@
 ﻿  j1Player.cpp
-c:\users\albert\desktop\super-mario-world--dev\project\motor2d\j1player.h(82): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\albert\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(134): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\albert\desktop\super-mario-world--dev\project\motor2d\j1player.h(76): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\albert\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(143): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   Motor2D.vcxproj -> C:\Users\Albert\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
   Motor2D.vcxproj -> C:\Users\Albert\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)
