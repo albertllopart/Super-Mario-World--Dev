@@ -54,6 +54,7 @@ bool j1Player::Start()
 	bool ret = true;
 	graphic = App->tex->Load("maps/Mario.png");
 	state = IDLE_R;
+	substate = GROUNDED;
 	dir = RIGHT;
 	App->audio->LoadFx("/audio/jump.wav");
 
@@ -72,6 +73,11 @@ bool j1Player::PostUpdate()
 	if (Falling())
 	{
 		position.y += 1.0f;
+	}
+	else substate = GROUNDED;
+	if (state == SHORT_HOP_R)
+	{
+		Jumping();
 	}
 	Draw();
 	return true;
@@ -131,7 +137,7 @@ void j1Player::Draw()
 void j1Player::Input()
 {
 	//Right
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && substate == GROUNDED)
 	{
 		dir = RIGHT;
 		if (App->map->IsWalkable())
@@ -141,7 +147,7 @@ void j1Player::Input()
 		state = WALK_R;
 		
 	}
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_UP && substate == GROUNDED)
 	{
 		dir = RIGHT;
 		if (App->map->IsWalkable())
@@ -153,7 +159,7 @@ void j1Player::Input()
 
 
 	//Left
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && substate == GROUNDED)
 	{
 		dir = LEFT;
 		if (App->map->IsWalkable())
@@ -162,7 +168,7 @@ void j1Player::Input()
 		}
 		state = WALK_L;	
 	}
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_UP && substate == GROUNDED)
 	{
 		dir = LEFT;
 		if (App->map->IsWalkable())
@@ -172,8 +178,15 @@ void j1Player::Input()
 		state = IDLE_L;
 	}
 
+	//jump albert
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && substate == GROUNDED)
+	{
+		state = SHORT_HOP_R;
+		substate = AIRBORN;
+	}
+
 	//Jump
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	/*if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		App->audio->PlayFx(1);
 		if (dir == LEFT)
@@ -238,7 +251,7 @@ void j1Player::Input()
 			Jump(dt);
 			Jump_r(dt);
 		}
-	}
+	}*/
 
 }
 
@@ -275,7 +288,7 @@ bool j1Player::Falling()
 	//uint nextGid = fakeLayer->data->GetGid(player_x,player_y);
 	uint* nextGid = &fakeLayer->data->gid[(int)position.x / 16 + (((int)position.y + MARIO_HIGHT) / 16) * fakeLayer->data->width];
 
-	if (state != SHORT_HOP_L && state != SHORT_HOP_R)
+	if (state != SHORT_HOP_L && state != SHORT_HOP_R && dir == RIGHT)
 	{
 		if (*nextGid != 19)
 		{
@@ -286,6 +299,37 @@ bool j1Player::Falling()
 			ret = false;
 		}
 	}
+	else if (state != SHORT_HOP_L && state != SHORT_HOP_R && dir == LEFT)
+	{
+		nextGid++;
+		if (*nextGid != 19)
+		{
+			ret = true;
+		}
+		else
+		{
+			ret = false;
+		}
+	}
 
+	if (ret == true)
+	{
+		substate = AIRBORN;
+	}
+		
 	return ret;
+}
+
+void j1Player::Jumping()
+{
+	if (jump_count > 30)
+	{
+		jump_count = 0;
+		state = IDLE_R;
+	}
+	if (jump_count <= 30)
+	{
+		position.y -= SPEED_Y;
+		jump_count++;
+	}	
 }

@@ -9,7 +9,7 @@
 #include	"j1Animation.h"
 
 #define		SPEED_X 0.3f
-#define		SPEED_Y 1.0f
+#define		SPEED_Y 1.5f
 #define		GRAVITY -2.0f
 #define		MARIO_HIGHT 28
 
@@ -27,6 +27,12 @@ enum PLAYER_STATE
 	RUN_L,
 	RUN_R
 
+};
+
+enum PLAYER_SUBSTATE
+{
+	GROUNDED,
+	AIRBORN
 };
 
 enum Direction
@@ -56,6 +62,7 @@ public:
 	void Jump_l(float dt);
 	void Jump_r(float dt);
 	bool Falling();
+	void Jumping();
 
 	fPoint				position;
 	Direction			dir;
@@ -68,6 +75,7 @@ private:
 	SDL_Rect*			test;
 	
 	PLAYER_STATE		state;
+	PLAYER_SUBSTATE		substate;
 	fPoint				velocity;
 	float				p_time = 0;
 	float				c_time;
@@ -81,6 +89,9 @@ private:
 	Animation			short_hop_left;
 	Animation			short_hop_right;
 	Animation*			current_animation;
+
+	//jump albert
+	uint jump_count = 0;
 };
 
 #endif
