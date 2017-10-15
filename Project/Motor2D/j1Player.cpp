@@ -7,6 +7,7 @@
 #include "j1Input.h"
 #include "j1Map.h"
 #include "j1Audio.h"
+#include "j1Scene.h"
 
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
@@ -211,6 +212,30 @@ void j1Player::Input()
 		}
 			
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
+	{
+		ChangeMap("level_1.tmx");
+		App->render->camera.x = 0;
+		App->render->camera.y = 0;
+		lvl = ONE;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	{
+		if (lvl = ONE)
+		{
+			ChangeMap("level_1.tmx");
+			App->render->camera.x = 0;
+			App->render->camera.y = 0;
+		}
+		else if (lvl = TWO)
+		{
+			ChangeMap("level_2.tmx");
+			App->render->camera.x = 0;
+			App->render->camera.y = 0;
+		}
+	}
 	//Right
 	/*if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && substate == GROUNDED)
 	{
@@ -379,4 +404,15 @@ void j1Player::Jumping()
 		position.y -= SPEED_Y;
 		jump_count++;
 	}	
+}
+
+void j1Player::ChangeMap(const char* tmx)
+{
+	App->map->CleanUp();
+	App->map->Load(tmx);
+	position.x = 150;
+	position.y = 197;
+	velocity.x = 2;
+	velocity.y = 3;
+	
 }

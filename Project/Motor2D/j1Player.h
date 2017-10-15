@@ -40,6 +40,12 @@ enum Direction
 	RIGHT
 };
 
+enum Level
+{
+	ONE,
+	TWO
+};
+
 
 class j1Player : public j1Module
 {
@@ -54,12 +60,13 @@ public:
 	bool Load(pugi::xml_node&);
 	void Input();
 	void Draw();
-	
+	void ChangeMap(const char* tmx);
 	bool Falling();
 	void Jumping();
 
 	fPoint				position;
 	Direction			dir;
+	Level				lvl = ONE;
 
 private:
 	p2SString			name = nullptr;
