@@ -63,8 +63,8 @@ public:
 	void ChangeMap(const char* tmx);
 	bool Falling();
 	void Jumping();
-	bool Save(pugi::xml_node& sav) const;
-	bool Load(pugi::xml_node& lod);
+	bool PlayerSave(pugi::xml_node& sav) const;
+	bool PlayerLoad(pugi::xml_node& lod);
 
 	fPoint				position;
 	Direction			dir;

@@ -428,7 +428,7 @@ void j1Player::ChangeMap(const char* tmx)
 	
 }
 
-bool j1Player::Save(pugi::xml_node& sav) const
+bool j1Player::PlayerSave(pugi::xml_node& sav) const
 {
 	bool ret = true;
 	pugi::xml_node player = sav.append_child("position");
@@ -441,7 +441,7 @@ bool j1Player::Save(pugi::xml_node& sav) const
 	return ret;
 }
 
-bool j1Player::Load(pugi::xml_node& lod)
+bool j1Player::PlayerLoad(pugi::xml_node& lod)
 {
 	bool ret = true;
 
