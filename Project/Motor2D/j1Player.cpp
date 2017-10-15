@@ -236,6 +236,17 @@ void j1Player::Input()
 			App->render->camera.y = 0;
 		}
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_UP)
+	{
+		App->LoadGame();	
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_UP)
+	{
+		App->SaveGame();
+	}
+
 	//Right
 	/*if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && substate == GROUNDED)
 	{
@@ -415,4 +426,45 @@ void j1Player::ChangeMap(const char* tmx)
 	velocity.x = 2;
 	velocity.y = 3;
 	
+}
+
+bool j1Player::Save(pugi::xml_node& sav) const
+{
+	bool ret = true;
+	pugi::xml_node player = sav.append_child("position");
+
+	player.append_attribute("lvl") = lvl;
+	player.append_attribute("x") = position.x;
+	player.append_attribute("y") = position.y;
+	
+
+	return ret;
+}
+
+bool j1Player::Load(pugi::xml_node& lod)
+{
+	bool ret = true;
+
+	if (lvl != lod.child("position").attribute("Actual_LVL").as_int())
+	{
+		if (lod.child("position").attribute("lvl").as_int() == ONE)
+		{
+			ChangeMap("level_1.tmx");
+			position.x = lod.child("position").attribute("x").as_int();
+			position.y = lod.child("position").attribute("y").as_int();
+		}
+		else if (lod.child("position").attribute("lvl").as_int() == TWO)
+		{
+			ChangeMap("level_2.tmx");
+			position.x = lod.child("position").attribute("x").as_int();
+			position.y = lod.child("position").attribute("y").as_int();
+		}
+	}
+
+	else
+	{
+		position.x = lod.child("position").attribute("x").as_int();
+		position.y = lod.child("position").attribute("y").as_int();
+	}
+	return ret;
 }
