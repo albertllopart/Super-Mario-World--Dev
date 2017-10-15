@@ -1,4 +1,11 @@
-﻿  j1Player.cpp
+﻿  pugixml.cpp
+  j1Window.cpp
+  j1Textures.cpp
+  j1Render.cpp
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.h(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  p2Log.cpp
+  j1Scene.cpp
+  j1Player.cpp
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.h(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(139): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(193): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
@@ -9,5 +16,17 @@ c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(227):
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(232): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(242): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
 c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.cpp(247): warning C4244: '=': conversión de 'DWORD' a 'float'; posible pérdida de datos
+  j1Map.cpp
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.h(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(77): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(398): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1map.cpp(399): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  j1Input.cpp
+  j1Audio.cpp
+  j1App.cpp
+c:\users\arnau\desktop\super-mario-world--dev\project\motor2d\j1player.h(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+  j1Main.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.exe
   Motor2D.vcxproj -> C:\Users\Arnau\Desktop\Super-Mario-World--Dev\Project\Debug\Motor 2D.pdb (Partial PDB)
