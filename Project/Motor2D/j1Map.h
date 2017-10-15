@@ -99,7 +99,9 @@ public:
 
 	//Colisions
 	bool IsWalkable();
-
+	bool level_1 = true;
+	bool level_2 = false;
+	
 private:
 
 	bool LoadMap();

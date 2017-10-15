@@ -59,12 +59,12 @@ void j1Map::Draw()
 					if (fakeLayer->data->name != "Muntanya2" && 
 						fakeLayer->data->name != "nuvols" &&
 						fakeLayer->data->name != "logica")
-						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
+						App->render->Blit(fakeTileset->data->texture, position.x - fakeTileset->data->tile_width, position.y, &rect);
 
 					else if (fakeLayer->data->name == "Muntanya2")
 					{
 						//MOUNTAIN PARALLAX
-						App->render->Blit(fakeTileset->data->texture, position.x - App->player->position.x / 4, position.y, &rect);
+						App->render->Blit(fakeTileset->data->texture, position.x - fakeTileset->data->tile_width + App->render->camera.x / 12, position.y, &rect);
 					}
 						
 					else if (fakeLayer->data->name == "nuvols")
@@ -74,12 +74,12 @@ void j1Map::Draw()
 						{
 							cloud_parallax = 0.0f;
 						}
-						App->render->Blit(fakeTileset->data->texture, position.x - cloud_parallax, position.y, &rect);
+						App->render->Blit(fakeTileset->data->texture, position.x - cloud_parallax - fakeTileset->data->tile_width, position.y, &rect);
 						cloud_parallax += 0.00005f;
 					}
 					else if (fakeLayer->data->name == "logica" && logic)
 					{
-						App->render->Blit(fakeTileset->data->texture, position.x, position.y, &rect);
+						App->render->Blit(fakeTileset->data->texture, position.x - fakeTileset->data->tile_width, position.y, &rect);
 					}
 				}
 			}
